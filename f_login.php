@@ -29,12 +29,14 @@
             event.preventDefault();
             var user = document.getElementById('user').value;
             var pass = document.getElementById('pass').value;
+
             localStorage.setItem('usuario', user);
-            localStorage.setItem('contrasena', pass);
 			sessionStorage.setItem('usuario', user);
+
             window.location.assign('Index.php');
         });
     </script>
+
 </body>
 
 </html>

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,6 +20,11 @@
                 <li><a href="#">Mi semana</a></li>
                 <li><a href="registro.php">Registrate</a></li>
                 <li><a href="f_login.php">Iniciar sesión</a></li>
+                <?php if (isset($_SESSION['usuario'])): ?>
+                    <li><a href="logout.php">Cerrar sesión</a></li>
+                <?php else: ?>
+                    <li><a href="f_login.php">Iniciar sesión</a></li>
+                <?php endif; ?>
             </ul>
             <ul>
                 <li class="marca"><a href="#">MilRecetas</a></li>
@@ -25,6 +33,11 @@
                 <li class="hideOnMobile"><a href="#">Mi semana</a></li>
                 <li class="hideOnMobile"><a href="registro.php">Registrarse</a></li>
                 <li class="hideOnMobile"><a href="f_login.php">Iniciar sesión</a></li>
+                <?php if (isset($_SESSION['usuario'])): ?>
+                    <li><a href="logout.php">Cerrar sesión</a></li>
+                <?php else: ?>
+                    <li><a href="f_login.php">Iniciar sesión</a></li>
+                <?php endif; ?>
                 <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
             </ul>
             </nav>
@@ -45,8 +58,6 @@
             const sidebar = document.querySelector('.sidebar')
             sidebar.style.display = 'none'
         }
-        
-        
     </script>
 
 </body>
