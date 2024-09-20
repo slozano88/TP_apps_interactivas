@@ -24,7 +24,6 @@
 		</form>
 	</div>
 
-
 <!-- 	<script>
         document.getElementById('login_form').addEventListener('submit', function(event) {
             event.preventDefault();

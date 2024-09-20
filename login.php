@@ -11,7 +11,6 @@ include("conexion_db.php");
 		$var_pass = $row["contra"];
 		$var_usuario = $row["usuario"];
 	}
-
 	if(@$var_pass==$clave AND @$var_usuario==$usuario){
 		session_start();
 		$_SESSION['usuario']=$usuario;
@@ -23,7 +22,6 @@ include("conexion_db.php");
 			</script>";
 	}
 	mysqli_free_result($user);
-	mysqli_close($conex);
-
+	mysqli_close($conexion);
 
 ?>
