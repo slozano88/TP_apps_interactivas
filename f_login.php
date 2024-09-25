@@ -24,7 +24,8 @@
 			<div class="redireccion_inicio" onclick="window.location.href='Index.php'" style="cursor: pointer;"><a href="Index.php" class="boton">Salir</a></div>
 		</form>
 	</div>
-<!-- 	<script>
+
+	<script>
         document.getElementById('login_form').addEventListener('submit', function(event) {
             event.preventDefault();
             var user = document.getElementById('user').value;
@@ -33,8 +34,7 @@
 			sessionStorage.setItem('usuario', user);
             window.location.assign('Index.php');
         });
-	</script> -->
-
+    </script>
 </body>
 
 </html>
