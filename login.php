@@ -1,24 +1,38 @@
 <?php
+
 include("conexion_db.php");
+include("f_login.php");
 
-$usuario=$_POST['user'];
-$clave=$_POST['pass'];
+$usuario = $_POST['user'];
+$clave = $_POST['pass'];
 
-$user=mysqli_query($conex,"SELECT usuario,contra FROM datos_usuarios WHERE usuario = '$usuario' AND contra='$clave'");
+$user = mysqli_query($conex, "SELECT usuario,contra FROM datos_usuarios WHERE usuario = '$usuario' AND contra='$clave'");
 
-if($row=mysqli_fetch_assoc($user)){
-    $var_pass = $row["contra"];
-    $var_usuario = $row["usuario"];
+if ($row = mysqli_fetch_assoc($user)) {
+	$var_pass = $row["contra"];
+	$var_usuario = $row["usuario"];
 }
-
-if(@$var_pass==$clave AND @$var_usuario==$usuario){
-    $response = array('success' => true, 'usuario' => $var_usuario);
+if (@$var_pass == $clave and @$var_usuario == $usuario) {
+	session_start();
+	$_SESSION['usuario'] = $usuario;
+	echo "<div class='alert alert-success fixed-top text-center' role='alert'>
+		Inicio de sesión exitoso! Redirigiendo a la página principal...
+		</div>";
+	echo "<script type='text/javascript'>
+		setTimeout(function() {
+		location.href='Index.php';
+		}, 2000);
+		</script>";
 } else {
-    $response = array('success' => false, 'error' => 'usuario o contraseña incorrecto');
+	echo "<div class='alert alert-danger fixed-top text-center' role='alert'>
+            Usuario Incorrecto, intentelo de nuevo...
+            </div>";
+	echo "<script type ='text/javascript'>
+            setTimeout(function() {
+            location.href='f_login.php';
+            }, 1000);
+            </script>";
 }
-
-echo json_encode($response);
-
 mysqli_free_result($user);
 mysqli_close($conex);
 ?>

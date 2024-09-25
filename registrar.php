@@ -11,21 +11,31 @@ if (isset($_POST['registra'])) {
         $stmt->bind_param("sss", $usuario, $contrasenia, $fechareg);
 
         if ($stmt->execute()) {
-            header("Location:Index.php");
+            echo "<div class='alert alert-success fixed-top text-center' role='alert'>
+            Registro de usuario exitoso! Redirigiendo a la página principal...
+            </div>";
+            echo "<script type='text/javascript'>
+            setTimeout(function() {
+            location.href='Index.php';
+            }, 2000);
+            </script>";
             exit();
         } else {
-            ?>
-            <h3 class="bad">Ha ocurrido un error</h3>
-            <?php
+            echo "<div class='alert alert-danger' role='alert'>
+            Ha ocurrido un error en el registro de usuario...
+            </div>";
+            echo "<script type ='text/javascript'>
+            setTimeout(function() {
+            location.href='registrar.php';
+            }, 2000);
+            </script>";
         }
-
         $stmt->close();
     } else {
-        ?>
+?>
         <h3 class="bad">Complete los campos</h3>
-        <?php
+<?php
     }
 }
-
 $conex->close();
 ?>
