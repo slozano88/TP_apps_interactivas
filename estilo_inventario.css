@@ -38,6 +38,7 @@ nav a {
 
 .marca {
     font-size: 1.6em;
+    margin-left: 0;
 }
 
 nav a:hover {

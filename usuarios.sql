@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2024 a las 05:45:08
+-- Tiempo de generación: 01-11-2024 a las 20:31:43
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `usuarios`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id_categoria` int(12) NOT NULL,
+  `nombre_cat` varchar(35) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id_categoria`, `nombre_cat`) VALUES
+(2, 'carnes'),
+(3, 'verduras'),
+(4, 'frutas'),
+(5, 'bebidas');
 
 -- --------------------------------------------------------
 
@@ -93,22 +114,19 @@ CREATE TABLE `ingredientes` (
   `nombre_ingrediente` varchar(45) NOT NULL,
   `fecha_agregado` varchar(10) NOT NULL,
   `cantidad` int(60) NOT NULL,
-  `id_ingrediente` int(20) NOT NULL
+  `id_ingrediente` int(20) NOT NULL,
+  `categoria` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `ingredientes`
---
-
-INSERT INTO `ingredientes` (`id_usuario`, `nombre_ingrediente`, `fecha_agregado`, `cantidad`, `id_ingrediente`) VALUES
-(34, 'morron', '01/11/24', 2, 1),
-(34, 'papa', '01/11/24', 86, 2),
-(34, 'a', '01/11/24', 2432, 3),
-(34, 'ad', '01/11/24', 23, 4);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id_categoria`);
 
 --
 -- Indices de la tabla `datos_usuarios`
@@ -128,6 +146,12 @@ ALTER TABLE `ingredientes`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id_categoria` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `datos_usuarios`
 --
 ALTER TABLE `datos_usuarios`
@@ -137,7 +161,7 @@ ALTER TABLE `datos_usuarios`
 -- AUTO_INCREMENT de la tabla `ingredientes`
 --
 ALTER TABLE `ingredientes`
-  MODIFY `id_ingrediente` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_ingrediente` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas

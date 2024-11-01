@@ -16,7 +16,6 @@
     
     if (!isset($_SESSION['id'])) {
         echo "Inicia sesion";
-        
     }
     else{echo "Bienvenido, usuario con ID: " . $_SESSION['id'];}
     ?>

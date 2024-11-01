@@ -9,8 +9,9 @@ if (isset($_POST['cargar'])) {
         $cant = trim($_POST['cantidad']);
         $fechareg = date("d/m/y");
         $id_ingrediente = $_SESSION['id'];
-        $stmt = $conex->prepare("INSERT INTO `ingredientes` (nombre_ingrediente, cantidad, fecha_agregado, id_usuario) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("sssi", $ingrediente, $cant, $fechareg, $id_ingrediente);
+        $categoria = $_POST['categoria'];
+        $stmt = $conex->prepare("INSERT INTO `ingredientes` (nombre_ingrediente, cantidad, fecha_agregado, id_usuario, categoria) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssis", $ingrediente, $cant, $fechareg, $id_ingrediente, $categoria);
         if ($stmt->execute()) {
             echo "<div class='alert alert-success fixed-top text-center' role='alert'>
             Ingrediente guardado con éxito!
