@@ -7,15 +7,16 @@ include("f_login.php");
 $usuario = $_POST['user'];
 $clave = $_POST['pass'];
 
-$user = mysqli_query($conex, "SELECT usuario,contra FROM datos_usuarios WHERE usuario = '$usuario' AND contra='$clave'");
+$user = mysqli_query($conex, "SELECT id,usuario,contra FROM datos_usuarios WHERE usuario = '$usuario' AND contra='$clave'");
 
 if ($row = mysqli_fetch_assoc($user)) {
 	$var_pass = $row["contra"];
 	$var_usuario = $row["usuario"];
+	$var_id = $row["id"];
 }
 if (@$var_pass == $clave and @$var_usuario == $usuario) {
 	session_start();
-	$_SESSION['usuario'] = $usuario;
+	$_SESSION['id'] = $var_id;
 	echo "<div class='alert alert-success fixed-top text-center' role='alert'>
 		Inicio de sesión exitoso! Redirigiendo a la página principal...
 		</div>";

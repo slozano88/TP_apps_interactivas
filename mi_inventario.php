@@ -10,6 +10,16 @@
 </head>
 
 <body>
+    <?php
+    session_start();
+
+
+    if (!isset($_SESSION['id'])) {
+        echo "Inicia sesion";
+    } else {
+        echo "Bienvenido, usuario con ID: " . $_SESSION['id'];
+    }
+    ?>
     <header>
         <nav>
             <ul class="sidebar">
@@ -17,36 +27,47 @@
                             <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
                         </svg></a></li>
                 <li><a href="#">Mis recetas</a></li>
-                <li><a href="mi_inventario.php">Mi inventario</a></li>
+                <li><a href="#">Mi inventario</a></li>
                 <li><a href="#">Mi semana</a></li>
                 <li><a href="registro.php">Registrate</a></li>
-                <li><a href="f_login.php">Iniciar sesión</a></li>
+                <?php
+                if (isset($_SESSION['id'])) {
+                    echo '<li><a href="logout.php">Cerrar Sesión</a></li>';
+                } else {
+                    echo '<li><a href="f_login.php">Iniciar sesión</a></li>';
+                }
+                ?>
             </ul>
             <ul>
-                <li class="marca"><a href="#">MilRecetas</a></li>
+                <li class="marca"><a href="Index.php">MilRecetas</a></li>
                 <li class="hideOnMobile"><a href="#">Mis recetas</a></li>
                 <li class="hideOnMobile"><a href="mi_inventario.php">Mi inventario</a></li>
                 <li class="hideOnMobile"><a href="#">Mi semana</a></li>
                 <li class="hideOnMobile"><a href="registro.php">Registrarse</a></li>
-                <li class="hideOnMobile"><a href="f_login.php">Iniciar sesión</a></li>
+                <?php
+                if (isset($_SESSION['id'])) {
+                    echo '<li class="hideOnMobile"><a href="logout.php">Cerrar Sesión</a></li>';
+                } else {
+                    echo '<li><a href="f_login.php">Iniciar sesión</a></li>';
+                }
+                ?>
                 <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
                             <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
                         </svg></a></li>
             </ul>
         </nav>
     </header>
-    <div class="container" style="background-color: #591e0893; padding: 20px; margin-left: 50px; border-radius: 10px;">
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <label for="formGroupExampleInput" class="form-label">Nombre de Ingrediente</label>
-            <input type="text" class="form-control" id="ingrediente" placeholder="Ingrese el nombre.." style="::placeholder { background-color: #F29F05; }">
-        </div>
-        <div class="col-md-6 mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Cantidad de Ingredientes</label>
-            <input type="text" class="form-control" id="cantidad" placeholder="Ingrese la cantidad...">
-        </div>
+    <div class="f_inventario">
+        <form action="guardar_inv.php" method="POST">
+            <h1>Guarda tu inventario</h1>
+            <h2>Nombre del ingrediente</h2><input type="text" name="ingrediente" placeholder="Ingrese el nombre..." required="required">
+            <h2>Cantidad</h2><input type="text" name="cantidad" placeholder="Ingrese una cantidad..." required="required">
+            <input type="submit" name="cargar">
+        </form>
     </div>
-</div>
+    <?php
+    include("guardar_inv.php");
+    ?>
 </body>
 
 </html>

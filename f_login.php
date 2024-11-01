@@ -25,7 +25,7 @@
 		</form>
 	</div>
 
-	<script>
+<!-- 	<script>
         document.getElementById('login_form').addEventListener('submit', function(event) {
             event.preventDefault();
             var user = document.getElementById('user').value;
@@ -34,7 +34,7 @@
 			sessionStorage.setItem('usuario', user);
             window.location.assign('Index.php');
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

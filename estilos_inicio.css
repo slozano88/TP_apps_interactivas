@@ -97,8 +97,37 @@ nav li:first-child {
 }
 
 /* Banner */
+.banner{
+    position: relative;
+    height: 60vh;
+    width: 100vw;
+    background-color: #591E08;
+}
+.banner-izq{
+    float: left;
+    height: 60vh;
+    width: 45vw;
+    background-image: linear-gradient(135deg, rgb(243, 107, 55) 0%, rgb(243, 107, 55) 23%,rgb(244, 133, 60) 23%, rgb(244, 133, 60) 27%,rgb(245, 159, 64) 27%, rgb(245, 159, 64) 73%,rgb(245, 186, 69) 73%, rgb(245, 186, 69) 74%,rgb(246, 212, 73) 74%, rgb(246, 212, 73) 78%,rgb(247, 238, 78) 78%, rgb(247, 238, 78) 100%);
+    border-bottom-right-radius: 60px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+.banner-izq h2{
+    font-size: 2.0em;
+    font-weight: 400;
+    background-color: rgba(255, 255, 255, 0.009);
+    padding: 50px;
+}
+.banner-der {
+    float: right;
+    width: 45vw;
+    height: 100%;
+    background-color: #f29f0517;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 
-.banner h2 {
+/* .banner h2 {
     font-family: Arial, sans-serif;
     font-size: 2.5em;
     overflow: hidden;
@@ -121,7 +150,7 @@ nav li:first-child {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('img_banner/img1_banner.jpg') center/100% 35vh no-repeat;
+    background: url('img_banner/banner.png') center/100% 35vh no-repeat;
     height: 45vh;
     position: relative;
     overflow: hidden;
@@ -175,4 +204,4 @@ nav li:first-child {
     100% {
         background-image: url('img_banner/img1_banner.jpg');
     }
-}
+} */
