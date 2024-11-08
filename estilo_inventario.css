@@ -6,7 +6,7 @@
 body {
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #591e0893;
+    background-color: #591e08e3;
 }
 
 nav {
@@ -38,6 +38,7 @@ nav a {
 
 .marca {
     font-size: 1.6em;
+    margin-left: 0;
 }
 
 nav a:hover {
@@ -105,3 +106,5 @@ nav li:first-child {
 .placeholder-orange::placeholder {
     background-color: #F29F05;
 }
+
+
